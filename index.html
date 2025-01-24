@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="walentynki.css">
+    <title>Czy zostaniesz moją Walentynką?</title>
+    <style>
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #fff;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #ff6f91;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin: 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        img {
+            width: 370px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="main-container">
+        <img id="img" src="bear.gif" alt="misio">
+        <h1 id="text">Czy zostaniesz moją Walentynką?</h1>
+        <div class="hearts" id="hearts">
+            <p>💕 💖 💕</p>
+        </div>
+        <h1 id="text2"></h1>
+        <button id="yes-button" onclick="handleYes()">Tak</button>
+        <button id="no-button" onclick="handleNo()">Nie</button>
+    </div>
+
+    <script>
+        let scaleYes = 1;
+        let scaleNo = 1;
+
+        function handleYes() {
+            const mainContainer = document.getElementById('main-container');
+            mainContainer.innerHTML = '<img src="happybear.gif" alt="Celebration" style="max-width: 100%; height: auto;">' +
+                '<h1>Jej jej jej! 🥳❤️</h1>';
+        }
+
+        function handleNo() {
+            const yesButton = document.getElementById('yes-button');
+            const noButton = document.getElementById('no-button');
+            const image = document.getElementById('img');
+            const text = document.getElementById('text');
+            const text2 = document.getElementById('text2');
+            const hearts = document.getElementById('hearts');
+
+            scaleYes += 0.2;
+            scaleNo -= 0.1;
+
+            yesButton.style.transform = `scale(${scaleYes})`;
+            noButton.style.transform = `scale(${Math.max(scaleNo, 0.5)})`;
+
+            image.src = "sadbear.gif";
+            text.textContent = "Jesteś pewna??? Może jeszcze zmienisz zdanie.";
+            text2.textContent = "Zostaniesz moja walentynka?🙏";
+            hearts.textContent = "😭 💔 🤧"
+        }
+    </script>
+</body>
+
+</html>
